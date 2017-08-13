@@ -22,15 +22,17 @@ const HEROES: Hero[] = [
     <h1>{{title}}</h1>
     <h2>MY heroes</h2>
     <ul class="heroes">
-       <li *ngFor = "let hero of heroes">
+       <li *ngFor = "let hero of heroes" (click)="onSelect(hero)">
           <span class="badge">{{hero.id}}</span>   {{hero.name}}     
        </li>
     </ul>
-    <h2>{{hero.name}} details!</h2>
-    <div><label>id: </label>{{hero.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="hero.name" placeholder="name">
+    <div *ngIf="selectedHero">
+	    <h2>{{selectedHero.name}} details!</h2>
+	    <div><label>id: </label>{{selectedHero.id}}</div>
+	    <div>
+	      <label>name: </label>
+	      <input [(ngModel)]="selectedHero.name" placeholder="name">
+	    </div>
     </div>
     `,
     styles: [`
@@ -54,13 +56,44 @@ const HEROES: Hero[] = [
         	height: 1.6em;
         	border-radius:4px;
         }
+        .heroes li.selected:hover{
+        	background-color: #BBD8DC !important;
+            color: white;
+        }
+        .heroes li:hover{
+        	color: #607d8b;
+        	background-color: #ddd;
+        	left: .1em;
+        }
+        .heroes .text{
+        	position: relative;
+        	top: .1em;
+        }
+        .heroes .badge{
+        	display:inline-block;
+        	font-size: small;
+        	color: white;
+        	padding: .8em .7em 0 .7em;
+        	background-color: #607d8b;
+        	line-height: 1em;
+        	position: relative;
+        	left: -1px;
+        	top: -4px;
+        	height: 1.8em;
+        	margin-right: .8em;
+        	border-radius: 4px 0 0 4px;
+        }
     `]
 })
 export class AppComponent {
   title = 'Tour of Heroes';
-  hero: Hero = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  // hero: Hero = {
+  //   id: 1,
+  //   name: 'Windstorm'
+  // };
+  selectedHero:Hero;
   heroes = HEROES;
+  onSelect(hero: Hero): void {
+  	this.selectedHero = hero;
+  }
 }
