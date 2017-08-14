@@ -20,65 +20,8 @@ import { HeroService } from './hero.service';
 // ];
 @Component({
   selector: 'my-heroes',
-  template: `
-    <h2>MY heroes</h2>
-    <ul class="heroes">
-       <li *ngFor = "let hero of heroes" (click)="onSelect(hero)"
-         [class.selected]="hero===selectedHero">
-          <span class="badge">{{hero.id}}</span>   {{hero.name}}     
-       </li>
-    </ul>
-    <hero-detail [hero]="selectedHero"></hero-detail>
-    `,
-    styles: [`
-        .selected{
-        	background-color: #cfd8dc !important;
-        	color: white;
-        }
-        .heroes{
-        	margin:0 0 2em 0;
-        	list-style-type:none;
-        	padding:0;
-        	width:15em;
-        }
-        .heroes li {
-        	cursor:pointer;
-        	position:relative;
-        	left:0;
-        	background-color:#eee;
-        	margin:.5em;
-        	padding: .3em 0;
-        	height: 1.6em;
-        	border-radius:4px;
-        }
-        .heroes li.selected:hover{
-        	background-color: #BBD8DC !important;
-            color: white;
-        }
-        .heroes li:hover{
-        	color: #607d8b;
-        	background-color: #ddd;
-        	left: .1em;
-        }
-        .heroes .text{
-        	position: relative;
-        	top: .1em;
-        }
-        .heroes .badge{
-        	display:inline-block;
-        	font-size: small;
-        	color: white;
-        	padding: .8em .7em 0 .7em;
-        	background-color: #607d8b;
-        	line-height: 1em;
-        	position: relative;
-        	left: -1px;
-        	top: -4px;
-        	height: 1.8em;
-        	margin-right: .8em;
-        	border-radius: 4px 0 0 4px;
-        }
-    `]
+  templateUrl: `./heroes.component.html`,
+  styleUrls: [`./heroes.component.css`]
     // providers: [HeroService],
 })
 export class HeroesComponent implements OnInit{
