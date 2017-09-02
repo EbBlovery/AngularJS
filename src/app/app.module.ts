@@ -18,10 +18,10 @@ import { AppRoutingModule } from './app-routing.module';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule, // <-- import the FormsModule before binding with [(ngModel)]
-    AppRoutingModule,
+    FormsModule,
     HttpModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
+    AppRoutingModule
   ],
   declarations: [
     AppComponent,
@@ -29,9 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
     HeroDetailComponent,
     HeroesComponent
   ],
-  providers: [
-    HeroService
-  ],
+  providers: [ HeroService ],
   bootstrap: [ AppComponent ]
 })
 

@@ -1,0 +1,3 @@
+<button (click)="onSave($event)">Save</button>
+<button *ngFor="let hero of heroes">{{hero.name}}</button>
+<form #heroForm (ngSubmit)="onSubmit(heroForm)">aaa</form>
